@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Elegant Store</title>
+</head>
+<body>
+    <section style="margin-top: 40px; min-height: calc(100vh - 80px); background-image: url('/img/login.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 40px 20px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card" style="background-color: rgba(255, 255, 255, 0); border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.993);">
+                        <div class="card-header text-center" style="background: transparent; border-bottom: none; padding-top: 20px;">
+                            <h2 style="color: #8A2BE2; ">Register</h2>
+                            <th:block th:if="${session.succMsg}">
+                                <p class="text-success fw-bold" th:text="${session.succMsg}"></p>
+                                <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+                            </th:block>
+                            <th:block th:if="${session.errorMsg}">
+                                <p class="text-danger fw-bold" th:text="${session.errorMsg}"></p>
+                                <th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+                            </th:block>
+                        </div>
+                        <div class="card-body p-4" style="color: white;">
+                            <form action="/saveUser" enctype="multipart/form-data" id="userRegister" novalidate method="post">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <input required class="form-control" id="name" name="name" type="text">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="mobileNumber" class="form-label">Mobile Number</label>
+                                        <input required class="form-control" id="mobileNumber" name="mobileNumber" type="tel">
+                                    </div>
+                                </div>
+								<div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label">E-Mail</label>
+                                        <input required class="form-control" id="email" name="email" type="text">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="mobileNumber" class="form-label">Address</label>
+                                        <input required class="form-control" id="address" name="address" type="text">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                   
+                                    <div class="col-md-6">
+                                        <label for="city" class="form-label">City</label>
+                                        <input required class="form-control" id="city" name="city" type="text">
+                                    </div>
+									<div class="col-md-6">
+                                        <label for="state" class="form-label">State</label>
+                                        <input required class="form-control" id="state" name="state" type="text">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                   
+                                    <div class="col-md-6">
+                                        <label for="pincode" class="form-label">Pincode</label>
+                                        <input required class="form-control" id="pincode" name="pincode" type="number">
+                                    </div>
+									<div class="col-md-6">
+                                        <label for="img" class="form-label">Profile Image</label>
+										<input class="form-control" id="img" name="img" type="file">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input required class="form-control" id="password" name="password" type="password">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="confirmpassword" class="form-label">Confirm Password</label>
+                                        <input required class="form-control" id="confirmpassword" name="confirmpassword" type="password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn w-100" style="background: linear-gradient(90deg, #FF69B4, #8A2BE2); color: rgb(184, 168, 168); border: none;">Register</button>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center" style="background: transparent; border-top: none; padding-bottom: 20px; color: white;">
+                            Have an account? <a href="/signin" style="color: #FF69B4; text-decoration: none;">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Elegant Store</title>
+</head>
+<body>
+    <section style="margin-top: 50px; min-height: calc(100vh - 40px); background-image: url('/img/login.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 40px 20px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card" style="background-color: rgba(255, 255, 255, 0.026); border-radius: 10px; box-shadow: 0 0 15px rgb(0, 0, 0);">
+                        <div class="card-header text-center" style="background: transparent; border-bottom: none; padding-top: 20px;">
+                            <h1 style="color: #892be2c6; margin-bottom: 20px; text-shadow: #FF69B4;">Login</h1>
+                            <div th:if="${param.error}" class="alert alert-danger">
+                                <th:block th:if="${session.SPRING_SECURITY_LAST_EXCEPTION != null}">
+                                    [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+                                </th:block>
+                            </div>
+                            <div th:if="${param.logout}" class="alert alert-success">
+                                Logout Successfully
+                            </div>
+                        </div>
+                        <div class="card-body p-4" style="color: white;">
+                            <form action="/login" method="post">
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Email</label>
+                                    <input required class="form-control" id="username" name="username" type="email">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input required class="form-control" id="password" name="password" type="password">
+                                </div>
+
+                                <button type="submit" class="btn w-100" style="background: linear-gradient(90deg, #FF69B4, #8A2BE2); color: white; border: none;">Login</button>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center" style="background: transparent; border-top: none; padding-bottom: 20px; color: white;">
+                            <a href="/forgot-password" class="text-decoration-none" style="color:#fa0781">Forgot Password</a><br>
+                            Don't have an account?  <a href="/register" style="color:#fa0781; text-decoration: none;">Create one</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
